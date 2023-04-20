@@ -10,7 +10,7 @@ const PORT = process.env.PORT ? process.env.PORT : 8080;
 
 try {
   mongoose.connect(
-    `mongodb+srv://admin:${process.env.DB_PASSWORD}@verticedb.uymzx.mongodb.net/${process.env.DB_NAME}?retryWrites=true&w=majority`,
+    `mongodb+srv://admin:AveGBspRclOLC4ih@verticedb.uymzx.mongodb.net/VerticeDB?retryWrites=true&w=majority`,
     { useNewUrlParser: true, useUnifiedTopology: true }
   );
   console.log('CONNECTION!');

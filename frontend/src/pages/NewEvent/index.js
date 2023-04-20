@@ -43,7 +43,7 @@ const NewEvent = () => {
 
   const generateURL = (img) => {
     let form = new FormData();
-    form.set('key', process.env.REACT_APP_IMGBB_KEY);
+    form.set('key', "08a9fd13a05f5f19bc0fb009ae4d81c0");
     form.append('image', img);
 
     return axios({

@@ -7,7 +7,7 @@ import "../LoginButton/LoginButton.scss";
 
 const LoginButton = () => {
   const [isLoggedIn, setIsLogedIn] = useState(false);
-  const CLIENT_ID = process.env.REACT_APP_CLIENT_ID;
+  const CLIENT_ID = "574803115943-p8gss2lgnl7at19a7l5arkg8ed1qmndg.apps.googleusercontent.com";
   const navigate = useNavigate();
   const currentLocation = window.location.pathname;
 

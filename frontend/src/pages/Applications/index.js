@@ -19,16 +19,16 @@ const Applications = () => {
     <>
       <Sidebar isOpen={isOpen} toggle={toggle} />
       <Navbar toggle={toggle} />
-      <div className="apply-container">
-        <h1>Solicitudes</h1>
-        <table id="customers">
+      <div className="members-container">
+        <h2>Solicitudes</h2>
+        <table className="table-data">
           <thead>
             <tr>
-              <th>ID</th>
-              <th>Nombre</th>
-              <th>Carrera</th>
-              <th>Correo institucional</th>
-              <th>Archivo adjunto</th>
+              <th scope="col">ID</th>
+              <th scope="col">Nombre</th>
+              <th scope="col">Carrera</th>
+              <th scope="col">Correo institucional</th>
+              <th scope="col">Archivo adjunto</th>
             </tr>
           </thead>
           <tbody>

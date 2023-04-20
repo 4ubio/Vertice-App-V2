@@ -30,7 +30,7 @@ export const AppRoutes = () => {
           element={<Attendance />}
         />
         <Route path="/aplicar" element={<Apply />} />
-        <Route path="/dashboard/aplicaciones" element={<Applications />} />
+        <Route path="/dashboard/solicitudes" element={<Applications />} />
         <Route path='/dashboard/miembros' element={<Members />} />
         <Route path='/dashboard/miembros-eliminados' element={<DeletedMembers />} />
         <Route path='/dashboard/nuevo-evento' element={<NewEvent />} />
