@@ -11,6 +11,8 @@ import Attendance from './pages/Attendance';
 import Perfil from './pages/Perfil';
 import Register from './pages/Register';
 import MemberAttendance from './pages/MemberAttendance';
+import Apply from './pages/Apply';
+import Applications from './pages/Applications';
 
 export const AppRoutes = () => {
   return (
@@ -27,6 +29,8 @@ export const AppRoutes = () => {
           path='/dashboard/eventos/:eventId/asistencias/'
           element={<Attendance />}
         />
+        <Route path="/aplicar" element={<Apply />} />
+        <Route path="/dashboard/aplicaciones" element={<Applications />} />
         <Route path='/dashboard/miembros' element={<Members />} />
         <Route path='/dashboard/miembros-eliminados' element={<DeletedMembers />} />
         <Route path='/dashboard/nuevo-evento' element={<NewEvent />} />
