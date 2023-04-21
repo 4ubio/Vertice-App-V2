@@ -1,0 +1,17 @@
+@import "../../variables.scss";
+
+.container-skills {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+}
+
+.percentage {
+    background-color: #EECD42;
+    color: black !important;
+    border-radius: 5px;
+}
+
+.complete {
+    color: $bright-pink;
+    font-weight: bold;
+}

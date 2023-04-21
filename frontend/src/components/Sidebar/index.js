@@ -39,6 +39,8 @@ const Sidebar = ({ isOpen, toggle }) => {
               <SidebarLink href="/mi-perfil">Inicio</SidebarLink>
               <SidebarLink href="/eventos">Eventos</SidebarLink>
               <SidebarLink href="/asistencias">Asistencias</SidebarLink>
+              <SidebarLink href="/competencias">Competencias</SidebarLink>
+              <SidebarLink href="/materias">Materias</SidebarLink>
             </>
           )}
           <LoginButton />

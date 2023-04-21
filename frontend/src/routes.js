@@ -13,6 +13,8 @@ import Register from './pages/Register';
 import MemberAttendance from './pages/MemberAttendance';
 import Apply from './pages/Apply';
 import Applications from './pages/Applications';
+import Skills from './pages/Skills';
+import Subjects from './pages/Subjects';
 
 export const AppRoutes = () => {
   return (
@@ -23,6 +25,8 @@ export const AppRoutes = () => {
         <Route path='/eventos' element={<Events />} />
         <Route path='/mi-perfil' element={<Perfil />} />
         <Route path='/asistencias' element={<MemberAttendance />} />
+        <Route path='/competencias' element={<Skills />} />
+        <Route path='/materias' element={<Subjects />} />
         <Route path='/dashboard' element={<Dashboard />} />
         <Route path='/dashboard/eventos' element={<AdminEvents />} />
         <Route
