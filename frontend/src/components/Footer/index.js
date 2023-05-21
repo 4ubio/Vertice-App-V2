@@ -1,5 +1,7 @@
 import React from "react";
 import logoIest from "../../images/logo-iest.png";
+import logoCE from "../../images/ciencias-exactas.png";
+import logoISND from "../../images/isnd.png";
 import "./Footer.scss";
 
 const Footer = () => {
@@ -22,7 +24,11 @@ const Footer = () => {
             <p>Ing. Betsabé Rodríguez Silva</p>
           </li>
         </ul>
-        <img src={logoIest} alt="Logo del IEST Anahuac en blanco" />
+        <div className="container_logo">
+          <img src={logoISND} alt="Logo del IEST Anahuac en blanco" className="mini_logo"/>
+          <img src={logoCE} alt="Logo del IEST Anahuac en blanco" className="mini_logo"/>
+          <img src={logoIest} alt="Logo del IEST Anahuac en blanco" />
+        </div>
       </nav>
     </>
   );

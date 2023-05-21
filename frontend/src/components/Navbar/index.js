@@ -68,6 +68,12 @@ const Navbar = ({ toggle }) => {
               <li>
                 <a href="/materias">Materias</a>
               </li>
+              <li>
+                <a href="/avance">Avance</a>
+              </li>
+              <li>
+                <a href="/puntaje">Puntaje</a>
+              </li>
             </>
           )}
           <LoginButton />

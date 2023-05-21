@@ -15,6 +15,8 @@ import Apply from './pages/Apply';
 import Applications from './pages/Applications';
 import Skills from './pages/Skills';
 import Subjects from './pages/Subjects';
+import Progress from './pages/Progress';
+import Points from './pages/Points';
 
 export const AppRoutes = () => {
   return (
@@ -27,6 +29,8 @@ export const AppRoutes = () => {
         <Route path='/asistencias' element={<MemberAttendance />} />
         <Route path='/competencias' element={<Skills />} />
         <Route path='/materias' element={<Subjects />} />
+        <Route path='/avance' element={<Progress />} />
+        <Route path='/puntaje' element={<Points />} />
         <Route path='/dashboard' element={<Dashboard />} />
         <Route path='/dashboard/eventos' element={<AdminEvents />} />
         <Route

@@ -45,10 +45,10 @@ const Perfil = () => {
           <p className='profile-container__box--info--bold'>Generación</p>
           <p>{localStorage.getItem('gen')}ra.</p>
         </div>
-        <div className='profile-container__box--points'>
+        <a className='profile-container__box--points' href='/puntaje'>
           <p className='profile-container__box--points--bold'>Puntaje</p>
           <p>{points} / 40</p>
-        </div>
+        </a>
         <a className='profile-container__box--assistance' href='/asistencias'>
           <p className='profile-container__box--assistance--bold'>
             Asistencias
