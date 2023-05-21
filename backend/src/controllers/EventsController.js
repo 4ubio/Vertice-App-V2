@@ -24,6 +24,7 @@ module.exports = {
       eventType,
       //attendees,
       points,
+      character,
       semester,
     } = req.body;
     console.log(req);
@@ -41,6 +42,7 @@ module.exports = {
       eventType,
       //attendees,
       points,
+      character,
       semester,
     });
     console.log(event);
@@ -114,6 +116,28 @@ module.exports = {
       {
         $match: {
           status: 'Active',
+          availability: { $gt: 0 },
+          generation: { $in: [gen] },
+        },
+      },
+      { $sort: { date: 1 } },
+    ]);
+    console.log(events);
+    if (events) {
+      console.log(events);
+      return res.json(events);
+    } else {
+      res.json({ message: 'No se encontraron eventos' });
+    }
+  },
+  //get obligatory events according to gen
+  async getObligatoryEventsByGen(req, res) {
+    const { gen } = req.params;
+    const events = await Event.aggregate([
+      {
+        $match: {
+          status: 'Active',
+          character: 'Obligatorio',
           availability: { $gt: 0 },
           generation: { $in: [gen] },
         },

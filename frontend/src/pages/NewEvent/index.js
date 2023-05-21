@@ -18,6 +18,7 @@ const NewEvent = () => {
   const [eventType, setEventType] = useState('');
   const [points, setPoints] = useState(1);
   const [generation, setGeneration] = useState([]);
+  const [character, setCharacter] = useState('');
   const [fileName, setFileName] = useState('');
 
   const toggle = () => {
@@ -65,7 +66,8 @@ const NewEvent = () => {
       place,
       eventType,
       points,
-      generation
+      generation,
+      character
     );
     const response = await api.post('/events', {
       title: title,
@@ -80,6 +82,7 @@ const NewEvent = () => {
       place: place,
       eventType: eventType,
       points: points,
+      character: character,
       semester: 'AGO-DIC 2022',
       attendees: [],
     });
@@ -229,6 +232,16 @@ const NewEvent = () => {
             value={points}
             onChange={(event) => setPoints(event.target.value)}
           />
+          <label htmlFor='character'>De cáracter</label>
+          <select
+            name='character'
+            onChange={(event) => setCharacter(event.target.value)}
+            required
+          >
+            <option value=''>Seleccionar opción...</option>
+            <option value='Obligatorio'>Obligatorio</option>
+            <option value='Opcional'>Opcional</option>
+          </select>
           <label htmlFor='generation'>Generación Vértice</label>
           <select
             name='generation'

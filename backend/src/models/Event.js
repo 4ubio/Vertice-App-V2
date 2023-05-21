@@ -14,6 +14,7 @@ const EventSchema = new mongoose.Schema({
   eventType: String,
   attendees: [],
   points: Number,
+  character: String,
   semester: String,
 });
 

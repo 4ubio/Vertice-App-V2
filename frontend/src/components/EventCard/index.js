@@ -17,6 +17,7 @@ const EventCard = ({
     modality,
     place,
     eventType,
+    character,
     attendees,
   },
 }) => {
@@ -93,6 +94,7 @@ const EventCard = ({
       <div className="event-container--columns">
         <p>Cupo: {availability}</p>
         <p>Modalidad: {modality}</p>
+        <p>Cáracter: {character}</p>
       </div>
       <div className="event-container--columns">
         <p id="event-container__committee">

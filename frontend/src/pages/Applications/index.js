@@ -26,8 +26,8 @@ const Applications = () => {
             <tr>
               <th scope="col">ID</th>
               <th scope="col">Nombre</th>
-              <th scope="col">Carrera</th>
               <th scope="col">Correo institucional</th>
+              <th scope="col">Carrera</th>
               <th scope="col">Archivo adjunto</th>
             </tr>
           </thead>
@@ -35,22 +35,22 @@ const Applications = () => {
             <tr>
               <td>001</td>
               <td>John Doe</td>
-              <td>Computer Science</td>
               <td>johndoe@example.com</td>
+              <td>Computer Science</td>
               <td><a href="#">Download</a></td>
             </tr>
             <tr>
               <td>002</td>
               <td>Jane Smith</td>
-              <td>Electrical Engineering</td>
               <td>janesmith@example.com</td>
+              <td>Electrical Engineering</td>
               <td><a href="#">Download</a></td>
             </tr>
             <tr>
               <td>003</td>
               <td>Bob Johnson</td>
-              <td>Business Administration</td>
               <td>bjohnson@example.com</td>
+              <td>Business Administration</td>
               <td><a href="#">Download</a></td>
             </tr>
           </tbody>

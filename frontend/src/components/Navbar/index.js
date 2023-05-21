@@ -63,13 +63,13 @@ const Navbar = ({ toggle }) => {
                 <a href="/asistencias">Asistencias</a>
               </li>
               <li>
-                <a href="/competencias">Competencias</a>
+                <a href="/avance">Avance</a>
               </li>
               <li>
                 <a href="/materias">Materias</a>
               </li>
               <li>
-                <a href="/avance">Avance</a>
+                <a href="/competencias">Competencias</a>
               </li>
               <li>
                 <a href="/puntaje">Puntaje</a>

@@ -35,6 +35,7 @@ routes.put(
   EventsController.removeAttendee
 );
 routes.get('/events/gen/:gen', EventsController.getEventsByGen);
+routes.get('/progress/gen/:gen', EventsController.getObligatoryEventsByGen);
 routes.get('/events/all/attendees/:memberId', EventsController.getAttendance);
 routes.get(
   '/events/all/attendees/:memberId/points',
