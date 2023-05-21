@@ -45,6 +45,9 @@ const Navbar = ({ toggle }) => {
                 <a href="/dashboard/nuevo-evento">Nuevo Evento</a>
               </li>
               <li>
+                <a href="/dashboard/materias">Materias</a>
+              </li>
+              <li>
                 <a href="/dashboard/miembros">Miembros</a>
               </li>{" "}
               <li>

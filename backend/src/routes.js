@@ -1,5 +1,6 @@
 const express = require('express');
 const EventsController = require('./controllers/EventsController');
+const SubjectsController = require('./controllers/SubjectsController');
 const MembersController = require('./controllers/MembersController');
 const AdministratorController = require('./controllers/AdministratorsController');
 const RemovedMembersController = require('./controllers/RemovedMembersController');
@@ -41,6 +42,11 @@ routes.get(
   '/events/all/attendees/:memberId/points',
   EventsController.calcPoints
 );
+
+routes.get('/subjects', SubjectsController.getAllSubjects);
+routes.post('/subjects', SubjectsController.createSubject);
+routes.get('/subjects/gen/:gen', SubjectsController.getSubjectsByGen);
+
 routes.get('/admins', AdministratorController.getAllAdministrators);
 routes.post('/admins', AdministratorController.createAdministrator);
 routes.get('/admins/:id', AdministratorController.getAdminById);

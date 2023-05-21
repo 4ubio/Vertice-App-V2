@@ -17,6 +17,8 @@ import Skills from './pages/Skills';
 import Subjects from './pages/Subjects';
 import Progress from './pages/Progress';
 import Points from './pages/Points';
+import AdminSubjects from './pages/AdminSubjects';
+import NewSubject from './pages/NewSubject';
 
 export const AppRoutes = () => {
   return (
@@ -42,6 +44,8 @@ export const AppRoutes = () => {
         <Route path='/dashboard/miembros' element={<Members />} />
         <Route path='/dashboard/miembros-eliminados' element={<DeletedMembers />} />
         <Route path='/dashboard/nuevo-evento' element={<NewEvent />} />
+        <Route path='/dashboard/materias' element={<AdminSubjects />} />
+        <Route path='/dashboard/nueva-materia' element={<NewSubject />} />
         <Route path='/register/:eventId' element={<Register />} />
       </Routes>
     </BrowserRouter>

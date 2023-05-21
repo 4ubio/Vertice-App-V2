@@ -5,25 +5,23 @@ import Sidebar from '../../components/Sidebar';
 import api from '../../services/api.js';
 import '../Skills/Skills.scss';
 
-const Subjects = () => {
+const AdminSubjects = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [subjects, setSubjects] = useState(null);
-
-  const fetchSubjects = async () => {
-    const response = await api.get(
-      `/subjects/gen/${localStorage.getItem("gen")}`
-    );
-    const subjectsFetched = response.data;
-    console.log(response);
-    setSubjects(subjectsFetched);
-  };
 
   const toggle = () => {
     setIsOpen(!isOpen);
   };
 
+  const fetchsubjects = async () => {
+    const response = await api.get('/subjects');
+    const subjectsFetched = response.data;
+    console.log(response);
+    setSubjects(subjectsFetched);
+  };
+
   useEffect(() => {
-    fetchSubjects();
+    fetchsubjects();
   }, []);
 
   return (
@@ -31,27 +29,26 @@ const Subjects = () => {
       <Sidebar isOpen={isOpen} toggle={toggle} />
       <Navbar toggle={toggle} />
       <div className="members-container">
+        <a href='/dashboard/nueva-materia' className='newButton'>Crear nueva</a>
         <h2>Materias</h2>
         <table className="table-data">
           <thead>
             <tr>
               <th scope="col">Materia</th>
-              <th scope="col">Status</th>
-              <th scope="col">Calificación</th>
+              <th scope="col">Generaciones</th>
             </tr>
           </thead>
           <tbody>
             {subjects ? (
-                  subjects.map((subject) => (
-                  <tr key={subject._id}>
-                      <td> {subject.title} </td>
-                      <td> No cursada </td>
-                      <td> No registro </td>
-                  </tr>
-                  ))
-              ) : (
-                  <h2>No subjects</h2>
-              )}
+                subjects.map((subject) => (
+                <tr key={subject._id}>
+                    <td> {subject.title} </td>
+                    <td> {subject.generation.join(", ")} </td>
+                </tr>
+                ))
+            ) : (
+                <h2>No subjects</h2>
+            )}
           </tbody>
         </table>
       </div>
@@ -60,4 +57,4 @@ const Subjects = () => {
   );
 };
 
-export default Subjects;
+export default AdminSubjects;
