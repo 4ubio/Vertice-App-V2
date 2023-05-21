@@ -5,6 +5,7 @@ import Footer from '../../components/Footer';
 import api from '../../services/api.js';
 import EventCard from '../../components/EventCard';
 import "../Events/Events.scss";
+import "../Skills/Skills.scss";
 
 const AdminEvents = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -31,6 +32,7 @@ const AdminEvents = () => {
       <Navbar toggle={toggle} />
       <div className="events-container">
         <h2 className="events-container__header">Actividades</h2>
+        <center><a href='/dashboard/nuevo-evento' className='newButton'>Crear nuevo</a></center> 
         <div className='events-container__grid'>
           {events ? (
             events.map((event, _id) => (

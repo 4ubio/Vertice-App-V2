@@ -29,9 +29,9 @@ const Sidebar = ({ isOpen, toggle }) => {
             <>
               <SidebarLink href="/dashboard">Inicio</SidebarLink>
               <SidebarLink href="/dashboard/solicitudes">Solicitudes</SidebarLink>
-              <SidebarLink href="/dashboard/eventos">Asistencias</SidebarLink>
-              <SidebarLink href="/dashboard/nuevo-evento">Nuevo Evento</SidebarLink>
+              <SidebarLink href="/dashboard/eventos">Eventos y asistencias</SidebarLink>
               <SidebarLink href="/dashboard/materias">Materias</SidebarLink>
+              <SidebarLink href="/dashboard/competencias">Competencias</SidebarLink>
               <SidebarLink href="/dashboard/miembros">Miembros</SidebarLink>
               <SidebarLink href="/dashboard/miembros-eliminados">Antiguos Miembros</SidebarLink>
             </>

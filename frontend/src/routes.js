@@ -19,6 +19,8 @@ import Progress from './pages/Progress';
 import Points from './pages/Points';
 import AdminSubjects from './pages/AdminSubjects';
 import NewSubject from './pages/NewSubject';
+import AdminSkills from './pages/AdminSkills';
+import NewSkill from './pages/NewSkill';
 
 export const AppRoutes = () => {
   return (
@@ -46,6 +48,8 @@ export const AppRoutes = () => {
         <Route path='/dashboard/nuevo-evento' element={<NewEvent />} />
         <Route path='/dashboard/materias' element={<AdminSubjects />} />
         <Route path='/dashboard/nueva-materia' element={<NewSubject />} />
+        <Route path='/dashboard/competencias' element={<AdminSkills />} />
+        <Route path='/dashboard/nueva-competencia' element={<NewSkill />} />
         <Route path='/register/:eventId' element={<Register />} />
       </Routes>
     </BrowserRouter>

@@ -1,6 +1,7 @@
 const express = require('express');
 const EventsController = require('./controllers/EventsController');
 const SubjectsController = require('./controllers/SubjectsController');
+const SkillsController = require('./controllers/SkillsController');
 const MembersController = require('./controllers/MembersController');
 const AdministratorController = require('./controllers/AdministratorsController');
 const RemovedMembersController = require('./controllers/RemovedMembersController');
@@ -46,6 +47,10 @@ routes.get(
 routes.get('/subjects', SubjectsController.getAllSubjects);
 routes.post('/subjects', SubjectsController.createSubject);
 routes.get('/subjects/gen/:gen', SubjectsController.getSubjectsByGen);
+
+routes.get('/skills', SkillsController.getAllSkills);
+routes.post('/skills', SkillsController.createSkill);
+routes.get('/skills/gen/:gen', SkillsController.getSkillsByGen);
 
 routes.get('/admins', AdministratorController.getAllAdministrators);
 routes.post('/admins', AdministratorController.createAdministrator);
