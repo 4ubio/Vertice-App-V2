@@ -9,6 +9,7 @@ const Navbar = ({ toggle }) => {
   const currentLocation = window.location.pathname;
   console.log(currentLocation);
   const isAdmin = localStorage.getItem("userType") === "admin" ? true : false;
+  const isApplicant = localStorage.getItem("userType") === "applicant" ? true : false;
   console.log(isAdmin);
   return (
     <>
@@ -53,6 +54,10 @@ const Navbar = ({ toggle }) => {
               <li>
                 <a href="/dashboard/miembros-eliminados">Antiguos Miembros</a>
               </li>
+            </>
+          ) : isApplicant ? (
+            <>
+              <FaBars className="navbar__bars" onClick={toggle} />
             </>
           ) : (
             <>

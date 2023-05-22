@@ -34,6 +34,26 @@ const LoginButton = () => {
       return;
     }
 
+    response = await api.get(`/applicants/email/${email}`);
+    let isApplicantResponse = response.data.message;
+    //checar si es aspirante
+    if (isApplicantResponse === "Es aplicante") {
+      setIsLogedIn(true);
+
+      localStorage.setItem("name", response.data.applicant[0].name);
+      localStorage.setItem("lastNames", response.data.applicant[0].lastNames);
+      localStorage.setItem("idIest", response.data.applicant[0].idIest);
+      localStorage.setItem("id", response.data.applicant[0]._id);
+      localStorage.setItem("bachelor", response.data.applicant[0].bachelor);
+
+      localStorage.setItem("userType", "applicant");
+      // alert("SOY ADMIN");
+      if (currentLocation === "/") {
+        navigate("/perfil-aspirante");
+      }
+      return;
+    }
+
     response = await api.put(`/members/${email}`, {
       headers: {
         profilePicture: localStorage.getItem("imageUrl"),

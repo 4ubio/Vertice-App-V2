@@ -1,0 +1,103 @@
+@import "../../variables.scss";
+
+.profile-container {
+  background-image: url("../../images/white-background.png");
+  background-size: 200%;
+  color: $off-white;
+  display: grid;
+  font-family: $default-font;
+  font-size: 20px;
+  height: 80vh;
+  padding: 32px;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: repeat(2, 1fr);
+  grid-template-areas:
+    "profile-info points points"
+    "profile-info points points";
+  grid-row-gap: 48px;
+  grid-column-gap: 48px;
+
+  &__box {
+
+    &--points {
+      color: $off-white;
+      border-radius: 24px;
+      grid-area: points;
+      background-color: $bright-pink;
+      padding-left: 32px;
+
+      &--bold {
+        font-weight: 500;
+      }
+
+      p:nth-child(1) {
+        font-size: 24px;
+      }
+
+      p:nth-child(2) {
+        font-size: 88px;
+        margin: 48px 0;
+
+        @media screen and (max-width: $breakpoint-ipad-screen) {
+          font-size: 72px;
+        }
+        @media screen and (max-width: $breakpoint-half-screen) {
+          font-size: 60px;
+        }
+        @media screen and (max-width: $breakpoint-smaller-phone) {
+          font-size: 56px;
+          margin: 16px 0 24px;
+        }
+      }
+    }
+  }
+
+  @media screen and (max-width: $breakpoint-ipad-screen) {
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: repeat(3, 1fr);
+    grid-template-areas:
+      "profile-info points"
+      "profile-info points"
+      "point points";
+    padding: 48px 32px;
+    height: auto;
+  }
+
+  @media screen and (max-width: $breakpoint-half-screen) {
+    grid-template-columns: 1.2fr 1fr;
+
+    &__box {
+      &--info {
+        img {
+          padding-bottom: 0;
+        }
+        p {
+          width: 80%;
+          margin: 24px auto;
+
+          font-size: 18px;
+        }
+      }
+
+      &--points {
+        height: 80%;
+        align-self: center;
+      }
+    }
+    @media screen and (max-width: $breakpoint-phone-screen) {
+      height: auto;
+      grid-template-columns: repeat(1, 1fr);
+      grid-template-rows: auto;
+      grid-template-areas:
+        "profile-info"
+        "points"
+        "points"
+        "points";
+      &__box {
+        &--points {
+          height: 100%;
+        }
+      }
+    }
+  }
+}

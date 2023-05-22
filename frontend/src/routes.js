@@ -21,12 +21,15 @@ import AdminSubjects from './pages/AdminSubjects';
 import NewSubject from './pages/NewSubject';
 import AdminSkills from './pages/AdminSkills';
 import NewSkill from './pages/NewSkill';
+import PerfilAspirante from './pages/PerfilAspirante';
 
 export const AppRoutes = () => {
   return (
     <BrowserRouter>
       <Routes>
         <Route path='/' element={<LandingPage />} />
+        
+        <Route path='/perfil-aspirante' element={<PerfilAspirante />} />
 
         <Route path='/eventos' element={<Events />} />
         <Route path='/mi-perfil' element={<Perfil />} />

@@ -3,6 +3,7 @@ const EventsController = require('./controllers/EventsController');
 const SubjectsController = require('./controllers/SubjectsController');
 const SkillsController = require('./controllers/SkillsController');
 const MembersController = require('./controllers/MembersController');
+const ApplicantsController = require('./controllers/ApplicantsController');
 const AdministratorController = require('./controllers/AdministratorsController');
 const RemovedMembersController = require('./controllers/RemovedMembersController');
 const routes = express.Router();
@@ -19,6 +20,10 @@ routes.delete('/members/:id', MembersController.removeMember);
 
 routes.get('/removed-members', RemovedMembersController.getAllRemovedMembers);
 routes.delete('/removed-members/:id', RemovedMembersController.restoreMember);
+
+//routes.get('/members', MembersController.getAllMembers);
+routes.post('/applicants', ApplicantsController.createApplicant);
+routes.get('/applicants/email/:email', ApplicantsController.getApplicantByEmail);
 
 routes.get('/events', EventsController.getAllEvents);
 routes.post('/events', EventsController.createEvent);

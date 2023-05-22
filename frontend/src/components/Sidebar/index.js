@@ -12,6 +12,7 @@ import LoginButton from "../LoginButton";
 const Sidebar = ({ isOpen, toggle }) => {
   const currentLocation = window.location.pathname;
   const isAdmin = localStorage.getItem("userType") === "admin" ? true : false;
+  const isApplicant = localStorage.getItem("userType") === "applicant" ? true : false;
 
   return (
     <SidebarContainer isOpen={isOpen} onClick={toggle}>
@@ -35,6 +36,8 @@ const Sidebar = ({ isOpen, toggle }) => {
               <SidebarLink href="/dashboard/miembros">Miembros</SidebarLink>
               <SidebarLink href="/dashboard/miembros-eliminados">Antiguos Miembros</SidebarLink>
             </>
+          ) : isApplicant ? (
+            <></>
           ) : (
             <>
               <SidebarLink href="/mi-perfil">Inicio</SidebarLink>
