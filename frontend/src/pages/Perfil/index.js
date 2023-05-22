@@ -44,6 +44,9 @@ const Perfil = () => {
           <p>{localStorage.getItem('bachelor')}</p>
           <p className='profile-container__box--info--bold'>Generación</p>
           <p>{localStorage.getItem('gen')}ra.</p>
+
+          <p className='profile-container__box--info--bold'>Strikes</p>
+          <p>{localStorage.getItem('strikes') || 0}</p>
         </div>
         <a className='profile-container__box--points' href='/puntaje'>
           <p className='profile-container__box--points--bold'>Puntaje</p>

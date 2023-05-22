@@ -22,6 +22,7 @@ import NewSubject from './pages/NewSubject';
 import AdminSkills from './pages/AdminSkills';
 import NewSkill from './pages/NewSkill';
 import PerfilAspirante from './pages/PerfilAspirante';
+import EditUser from './pages/Users/Edit';
 
 export const AppRoutes = () => {
   return (
@@ -54,6 +55,7 @@ export const AppRoutes = () => {
         <Route path='/dashboard/competencias' element={<AdminSkills />} />
         <Route path='/dashboard/nueva-competencia' element={<NewSkill />} />
         <Route path='/register/:eventId' element={<Register />} />
+        <Route path='/dashboard/users/edit/:userId' element={<EditUser />} />
       </Routes>
     </BrowserRouter>
   );

@@ -1,0 +1,11 @@
+@import "../../../variables";
+
+@import "../../../variables.scss";
+
+.edit-member {
+    padding: 4rem;
+    border-radius: 8px;
+    min-height: 100px;
+    background-color: white;
+    display: grid;
+}

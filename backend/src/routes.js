@@ -17,6 +17,7 @@ routes.post('/members', MembersController.createMember);
 routes.get('/members/:id', MembersController.getMemberById);
 routes.put('/members/:email', MembersController.updateProfilePicture);
 routes.delete('/members/:id', MembersController.removeMember);
+routes.patch('/members/:id', MembersController.editMember);
 
 routes.get('/removed-members', RemovedMembersController.getAllRemovedMembers);
 routes.delete('/removed-members/:id', RemovedMembersController.restoreMember);

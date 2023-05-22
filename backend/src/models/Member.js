@@ -8,6 +8,8 @@ const MemberSchema = new mongoose.Schema({
   gen: Number,
   bachelor: String,
   profilePicture: String,
+  strikes: Number,
+  status: Number,
 });
 
 module.exports = mongoose.model('Member', MemberSchema);

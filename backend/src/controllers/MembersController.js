@@ -82,6 +82,21 @@ module.exports = {
         });
     });
   },
+
+  async editMember(req, res) {
+    try {
+      const memberId = req.params.id;
+      console.log('req', req)
+      const data = req.body
+      console.log('data', data)
+      if(data) delete data._id
+      await Member.updateOne({ _id: memberId }, { ...data });
+      return res.json({ code: 1 })
+    } catch (error) {
+      console.log('There was an error editing the member')
+    }
+
+  }
   //getMembersByGen
   //editMember
   //removeMember

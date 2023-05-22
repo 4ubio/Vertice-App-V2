@@ -76,6 +76,8 @@ const LoginButton = () => {
     localStorage.setItem("id", response.data.member[0]._id);
     localStorage.setItem("gen", response.data.member[0].gen);
     localStorage.setItem("bachelor", response.data.member[0].bachelor);
+    localStorage.setItem("strikes", response.data.member[0].strikes || "0");
+    localStorage.setItem("status", response.data.member[0].status || "1");
 
     setIsLogedIn(true);
     console.log("[Login Success] currentUser:", res.profileObj);
