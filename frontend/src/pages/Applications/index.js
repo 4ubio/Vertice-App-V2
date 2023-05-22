@@ -2,18 +2,28 @@ import React, { useState, useEffect } from 'react';
 import Footer from '../../components/Footer';
 import Navbar from '../../components/Navbar';
 import Sidebar from '../../components/Sidebar';
+import api from '../../services/api.js';
 import './Applications.scss';
 
 const Applications = () => {
   const [isOpen, setIsOpen] = useState(false);
+  const [applicants, setApplicants] = useState(null);
 
   const toggle = () => {
     setIsOpen(!isOpen);
   };
 
-  //creo que aqui hay que poner un timeout
+  const fetchapplicants = async () => {
+    const response = await api.get('/applicants');
+    const applicantsFetched = response.data;
+    console.log(response);
+    setApplicants(applicantsFetched);
+  };
+
   useEffect(() => {
+    fetchapplicants();
   }, []);
+
 
   return (
     <>
@@ -32,27 +42,19 @@ const Applications = () => {
             </tr>
           </thead>
           <tbody>
-            <tr>
-              <td>001</td>
-              <td>John Doe</td>
-              <td>johndoe@example.com</td>
-              <td>Computer Science</td>
-              <td><a href="#">Download</a></td>
-            </tr>
-            <tr>
-              <td>002</td>
-              <td>Jane Smith</td>
-              <td>janesmith@example.com</td>
-              <td>Electrical Engineering</td>
-              <td><a href="#">Download</a></td>
-            </tr>
-            <tr>
-              <td>003</td>
-              <td>Bob Johnson</td>
-              <td>bjohnson@example.com</td>
-              <td>Business Administration</td>
-              <td><a href="#">Download</a></td>
-            </tr>
+            {applicants ? (
+              applicants.map((applicant) => (
+                <tr key={applicant._id}>
+                  <td>{applicant.idIest}</td>
+                  <td> {applicant.name} {applicant.lastNames} </td>
+                  <td>{applicant.email}</td>
+                  <td>{applicant.bachelor}</td>
+                  <td>Archivo</td>
+                </tr>
+              ))
+            ) : (
+              <h2>No applicants</h2>
+            )}
           </tbody>
         </table>
       </div>

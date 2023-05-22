@@ -1,6 +1,17 @@
 const Applicant = require('../models/Applicant');
 
 module.exports = {
+    async getAllApplicants(req, res) {
+      const applicants = await Applicant.aggregate([
+        { $match: { _id: { $exists: true } } },
+        { $sort: { idIest: -1 } },
+      ]);
+      if (applicants) {
+        return res.json(applicants);
+      } else {
+        res.json({});
+      }
+    },
     async createApplicant(req, res) {
       const { name, lastNames, idIest, email, gen, bachelor} =
         req.body;

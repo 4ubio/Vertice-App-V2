@@ -21,7 +21,7 @@ routes.delete('/members/:id', MembersController.removeMember);
 routes.get('/removed-members', RemovedMembersController.getAllRemovedMembers);
 routes.delete('/removed-members/:id', RemovedMembersController.restoreMember);
 
-//routes.get('/members', MembersController.getAllMembers);
+routes.get('/applicants', ApplicantsController.getAllApplicants);
 routes.post('/applicants', ApplicantsController.createApplicant);
 routes.get('/applicants/email/:email', ApplicantsController.getApplicantByEmail);
 
