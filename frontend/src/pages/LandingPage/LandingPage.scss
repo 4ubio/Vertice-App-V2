@@ -82,3 +82,16 @@
       }
     }
 }
+
+.p-2 {
+  padding: 2rem;
+}
+.p-4 {
+  padding: 4rem;
+}
+
+.about {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 3rem;
+}
