@@ -5,6 +5,13 @@ import Sidebar from '../../components/Sidebar';
 import api from "../../services/api.js";
 import '../Skills/Skills.scss';
 
+const getAttendeStatusFromEventByIdIEST = (id, attendees) => {
+  if(!id || !attendees || !attendees.length) return 'Pendiente'
+  const attendee = attendees.filter(attende => attende.idIest === id)[0]
+  if(!attendee || !attendee.attended) return 'Pendiente'
+  return 'Completado'
+}
+
 const Progress = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [events, setEvents] = useState(null);
@@ -45,7 +52,7 @@ const Progress = () => {
               events.map((event) => (
                 <tr key={event._id}>
                   <td> {event.title} </td>
-                  <td>Pendiente</td>
+                  <td>{getAttendeStatusFromEventByIdIEST(window.localStorage.getItem('idIest'), event.attendees)}</td>
                 </tr>
               ))
             ) : (
