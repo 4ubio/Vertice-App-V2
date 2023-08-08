@@ -2,7 +2,7 @@ import axios from 'axios';
 import React, { useState, useEffect } from 'react';
 import Footer from '../../components/Footer';
 import api from '../../services/api';
-import miembrosVertice from "../../images/landing-page-promocional.jpeg";
+import miembrosVertice from "../../images/apply_image.jpg";
 import './Apply.scss';
 
 const Apply = () => {
@@ -36,15 +36,17 @@ const Apply = () => {
   return (
     <>
       <div className="apply-container">
-        <h1 className='apply-theme'>Aplica al programa vértice</h1>
+        <div>
+          <h1 className='apply-theme'>¡Se parte de Vértice!</h1>
+          <img  
+            className="apply-form-img"
+            src={miembrosVertice}
+            alt="Miembros del Programa Vertice"
+          />     
+        </div>
+        
         <div className="apply-form-container">
-          <div>
-            <img  
-              className="apply-form-img"
-              src={miembrosVertice}
-              alt="Miembros del Programa Vertice"
-            />     
-          </div>
+          <h1 className='apply-theme'>Aplica aquí</h1>
           <form onSubmit={handleSubmit} class="apply-form" action="">
             <label htmlFor='name'>Nombre:</label>
             <input

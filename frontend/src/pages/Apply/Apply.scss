@@ -33,21 +33,25 @@ input[type=submit]:hover {
 }
 
 .apply-container {
-  padding: 3rem;
-  background-color: $bright-pink;
+  display: grid;
+  grid-template-columns: 0.9fr 1.1fr;
+  gap: 2rem;
+  text-align: center;
+
   h1 {
     color: whitesmoke;
   }
   .apply-form-container {
-    display: flex;
+    display: block !important;
   }
   .apply-form-img {
-    width: 100%;
-    border-radius: 12px;
+    width: 85% !important;
+    border-radius: 5rem !important;
   }
   .apply-form {
     background-color: whitesmoke;
     border-radius: 8px;
-    padding: 2rem;
+    padding: 2rem;    
+    text-align: left;
   }
 }
