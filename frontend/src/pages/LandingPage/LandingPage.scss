@@ -84,3 +84,78 @@
     scale: 1.2;
   }
 }
+
+.about-devs {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}
+
+.about-devs-card {
+  padding: 2rem;
+  color: white;
+  background: #823283;
+  text-align: justify;
+
+  h2 {
+    text-transform: uppercase;
+    font-weight: bold;
+    font-size: 2.4rem;
+  }
+  p {
+    font-weight: bold;
+    line-height: 2;
+    font-size: 1.2rem;
+  }
+  .center {
+    text-align: center;
+  }
+}
+.color-gray {
+  background-color: #d2d2d2;
+}
+.about-devs-card-2 {
+  padding: 2rem;
+  color: white;
+  text-shadow: #CF8FA7 2px 2px 0px;
+  background: #d2d2d2;
+  text-align: justify;
+
+  h2 {
+    font-weight: bold;
+    font-size: 2rem;
+  }
+  p {
+    font-weight: bold;
+    line-height: 2;
+    font-size: 1.2rem;
+  }
+  .center {
+    text-align: center;
+  }
+}
+
+.about-devs-card-3 {
+  padding: 2rem;
+  margin: 2rem;
+  color: white;
+  background: #823283;
+  text-align: justify;
+  text-shadow: none;
+
+  ul {
+    list-style: none;
+    padding: 0;
+    li {
+      font-weight: 600;
+      font-size: 1rem;
+      text-align: center;
+      line-height: 2;
+    }
+  }
+
+  p {
+    font-weight: 600;
+    line-height: 2;
+    font-size: 1.2rem;
+  }
+}
