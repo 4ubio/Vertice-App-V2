@@ -165,6 +165,8 @@ const NewEvent = () => {
             <option value='Acción Social'>Acción Social</option>
             <option value='Proyectos'>Proyectos</option>
             <option value='Integración'>Integración</option>
+            <option value='Ninguna'>N/A</option>
+            <option value='Todos'>Aplican todos</option>
           </select>
           <label htmlFor='modality'>Modalidad</label>
           <select
