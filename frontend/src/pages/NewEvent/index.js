@@ -222,6 +222,7 @@ const NewEvent = () => {
             <option value='Café Chesterton'>Café Chesterton</option>
             <option value='Investigation Talk'>Investigation Talk</option>
             <option value='Chronicles'>Chronicles</option>
+            <option value='Seminario'>Seminario</option>
           </select>
           <label htmlFor='points'>Puntuación</label>
           <input
