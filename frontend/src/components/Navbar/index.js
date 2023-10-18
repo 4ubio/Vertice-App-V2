@@ -5,6 +5,9 @@ import LoginButton from "../LoginButton";
 import "../Navbar/Navbar.scss";
 
 // FIX NAVBAR
+
+// 17/10/2023 se eliminó las etiquetas de competencias
+
 const Navbar = ({ toggle }) => {
   const currentLocation = window.location.pathname;
   console.log(currentLocation);
@@ -46,9 +49,6 @@ const Navbar = ({ toggle }) => {
                 <a href="/dashboard/materias">Materias</a>
               </li>
               <li>
-                <a href="/dashboard/competencias">Competencias</a>
-              </li>
-              <li>
                 <a href="/dashboard/miembros">Miembros</a>
               </li>{" "}
               <li>
@@ -75,9 +75,6 @@ const Navbar = ({ toggle }) => {
               </li>
               <li>
                 <a href="/materias">Materias</a>
-              </li>
-              <li>
-                <a href="/competencias">Competencias</a>
               </li>
               <li>
                 <a href="/puntaje">Puntaje</a>
