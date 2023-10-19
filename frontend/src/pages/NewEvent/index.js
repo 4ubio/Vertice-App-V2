@@ -257,6 +257,7 @@ const NewEvent = () => {
             <option value='3'>Tercera</option>
             <option value='4'>Cuarta</option>
             <option value='5'>Quinta</option>
+            <option value='6'>Sexta</option>
           </select>
           <button type='submit'>Crear evento</button>
         </form>
