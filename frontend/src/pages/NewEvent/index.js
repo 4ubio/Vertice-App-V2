@@ -16,10 +16,15 @@ const NewEvent = () => {
   const [modality, setModality] = useState('');
   const [place, setPlace] = useState('');
   const [eventType, setEventType] = useState('');
+  const [otherEventType, setOtherEventType] = useState('');
   const [points, setPoints] = useState(1);
   const [generation, setGeneration] = useState([]);
   const [character, setCharacter] = useState('');
   const [fileName, setFileName] = useState('');
+
+  const handleEventTypeChange = (event) => {
+  setEventType(event.target.value);
+};
 
   const toggle = () => {
     setIsOpen(!isOpen);
@@ -56,6 +61,7 @@ const NewEvent = () => {
 
   const handleSubmit = async (event) => {
     event.preventDefault();
+    const finalEventType = eventType === 'Otro' ? otherEventType : eventType;
     console.log(
       title,
       description,
@@ -80,7 +86,7 @@ const NewEvent = () => {
       committee: committee,
       modality: modality,
       place: place,
-      eventType: eventType,
+      eventType: finalEventType,
       points: points,
       character: character,
       semester: 'AGO-DIC 2022',
@@ -210,7 +216,7 @@ const NewEvent = () => {
           <label htmlFor='event-type'>Tipo de Evento</label>
           <select
             name='event-type'
-            onChange={(event) => setEventType(event.target.value)}
+            onChange={handleEventTypeChange}
             required
           >
             <option value=''>Seleccionar opción...</option>
@@ -225,7 +231,22 @@ const NewEvent = () => {
             <option value='Investigation Talk'>Investigation Talk</option>
             <option value='Chronicles'>Chronicles</option>
             <option value='Seminario'>Seminario</option>
+            <option value='Otro'>Otro</option>
           </select>
+
+          {eventType === 'Otro' && (
+  <div>
+    <label htmlFor="other-event-type">Especificar Tipo de Evento</label>
+    <input
+      name="other-event-type"
+      type="text"
+      placeholder="Especificar tipo de evento"
+      onChange={(event) => setOtherEventType(event.target.value)}
+      required
+    />
+  </div>
+)}
+
           <label htmlFor='points'>Puntuación</label>
           <input
             name='points'
