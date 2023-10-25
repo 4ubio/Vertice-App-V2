@@ -230,7 +230,7 @@ const NewEvent = () => {
           <input
             name='points'
             type='number'
-            min='1'
+            min='0'
             required
             value={points}
             onChange={(event) => setPoints(event.target.value)}
