@@ -32,7 +32,6 @@ const Sidebar = ({ isOpen, toggle }) => {
               <SidebarLink href="/dashboard/solicitudes">Solicitudes</SidebarLink>
               <SidebarLink href="/dashboard/eventos">Eventos y asistencias</SidebarLink>
               <SidebarLink href="/dashboard/materias">Materias</SidebarLink>
-              <SidebarLink href="/dashboard/competencias">Competencias</SidebarLink>
               <SidebarLink href="/dashboard/miembros">Miembros</SidebarLink>
               <SidebarLink href="/dashboard/miembros-eliminados">Antiguos Miembros</SidebarLink>
             </>
@@ -44,7 +43,6 @@ const Sidebar = ({ isOpen, toggle }) => {
               <SidebarLink href="/eventos">Eventos</SidebarLink>
               <SidebarLink href="/asistencias">Asistencias</SidebarLink>
               <SidebarLink href="/materias">Materias</SidebarLink>
-              <SidebarLink href="/competencias">Competencias</SidebarLink>
               <SidebarLink href="/puntaje">Puntaje</SidebarLink>
             </>
           )}
