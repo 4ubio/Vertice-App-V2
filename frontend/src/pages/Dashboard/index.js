@@ -26,7 +26,7 @@ const Dashboard = () => {
           <img alt="dashboard-pic" src={localStorage.getItem("imageUrl")} />
           <p className="dashboard-container__box--info--bold">Administrador</p>
           <p>
-            {localStorage.getItem("name")} {localStorage.getItem("lastNames")}
+            {localStorage.getItem("name") !== 'undefined' ? localStorage.getItem("name") : '' } {localStorage.getItem("lastNames") !== 'undefined' ? localStorage.getItem("lastNames") : ''}
           </p>
           {/* <p>Lorem Ipsum</p> */}
         </div>

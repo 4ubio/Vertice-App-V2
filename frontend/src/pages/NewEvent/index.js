@@ -1,11 +1,12 @@
 import axios from 'axios';
-import React, { useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import Navbar from '../../components/Navbar';
 import Sidebar from '../../components/Sidebar';
 import api from '../../services/api';
 import './NewEvent.scss';
 
-const NewEvent = () => {
+const NewEvent = ({ eventData = null }) => {
+  const [id, setId] = useState('');
   const [isOpen, setIsOpen] = useState(false);
   const [title, setTitle] = useState('');
   const [description, setDescription] = useState('');
@@ -21,6 +22,24 @@ const NewEvent = () => {
   const [generation, setGeneration] = useState([]);
   const [character, setCharacter] = useState('');
   const [fileName, setFileName] = useState('');
+
+  useEffect(() => {
+    if (eventData) {
+      setId(eventData._id);
+      setTitle(eventData.title);
+      setDescription(eventData.description);
+      setImg(eventData.img);
+      setDate(eventData.date);
+      setAvailability(eventData.availability);
+      setCommittee(eventData.committee);
+      setModality(eventData.modality);
+      setPlace(eventData.place);
+      setEventType(eventData.eventType);
+      setPoints(eventData.points);
+      setGeneration(eventData.generation);
+      setCharacter(eventData.character);
+    }
+  }, [eventData]);
 
   const handleEventTypeChange = (event) => {
   setEventType(event.target.value);
@@ -75,7 +94,7 @@ const NewEvent = () => {
       generation,
       character
     );
-    const response = await api.post('/events', {
+    const data = {
       title: title,
       description: description,
       date: date,
@@ -91,18 +110,27 @@ const NewEvent = () => {
       character: character,
       semester: 'AGO-DIC 2022',
       attendees: [],
-    });
-    console.log(response.data);
-    alert('Evento creado exitosamente.');
+    }
+    if (id) data.id = id;
+    const response = eventData ? await api.patch(`/events/${data.id}`, data) : await api.post('/events', data);
+    if (response.status === 200) {
+      alert(`Evento ${eventData ? 'editado' : 'creado'} exitosamente`);
+      window.location.reload();
+    }
+    else alert(`Hubo un error al ${eventData ? 'editar' : 'crear'} el evento`);
     window.location.reload();
   };
 
   return (
     <>
-      <Sidebar isOpen={isOpen} toggle={toggle} />
-      <Navbar toggle={toggle} />{' '}
+      {!eventData && (
+        <>
+        <Sidebar isOpen={isOpen} toggle={toggle} />
+        <Navbar toggle={toggle} />{' '}
+        </>
+      )}
       <div className='new-event'>
-        <h1>Nuevo Evento</h1>
+        <h1>{ eventData ? 'Editar Evento' : 'Nuevo Evento' }</h1>
         <form onSubmit={handleSubmit} className='new-event__form'>
           <label htmlFor='title'>Título del evento</label>
           <input
@@ -111,6 +139,7 @@ const NewEvent = () => {
             placeholder='Título del evento'
             required
             onChange={(event) => setTitle(event.target.value)}
+            value={title}
           />
           <label htmlFor='description'>Descripción</label>
           <textarea
@@ -118,6 +147,7 @@ const NewEvent = () => {
             type='text'
             placeholder='Descripción del evento'
             required
+            value={description}
             onChange={(event) => setDescription(event.target.value)}
           />
           <label>Imagen del evento</label>
@@ -128,6 +158,7 @@ const NewEvent = () => {
             {fileName ? fileName : 'Ningun archivo seleccionado.'}
           </label>
           <input
+            name='event-img'
             onChange={(e) => {
               setFileName(e.target.files[0].name);
               generateURL(e.target.files[0]).then((resp) =>
@@ -138,11 +169,12 @@ const NewEvent = () => {
             id='event-img'
             accept='.jpg, .jpeg, .png'
             max-file-size='33554432'
-            required
+            required={eventData ? false : true}
           />
-
+         {!!img && <img src={img} alt='event-img' width={200}/>}
           <label htmlFor='date'>Fecha</label>
           <input
+            value={date ? date.split('T')[0] : ''}
             name='date'
             type='date'
             required
@@ -160,6 +192,7 @@ const NewEvent = () => {
           <label htmlFor='comittee'>Comité</label>
           <select
             name='comittee'
+            value={committee}
             onChange={(event) => handleCommitteeOptions(event)}
             multiple
             required
@@ -177,6 +210,7 @@ const NewEvent = () => {
           <label htmlFor='modality'>Modalidad</label>
           <select
             name='modality'
+            value={modality}
             onChange={(event) => setModality(event.target.value)}
             required
           >
@@ -187,6 +221,7 @@ const NewEvent = () => {
           <label htmlFor='place'>Lugar</label>
           <select
             htmlFor='place'
+            value={place}
             onChange={(event) => setPlace(event.target.value)}
             required
           >
@@ -215,6 +250,7 @@ const NewEvent = () => {
 
           <label htmlFor='event-type'>Tipo de Evento</label>
           <select
+            value={eventType}
             name='event-type'
             onChange={handleEventTypeChange}
             required
@@ -261,6 +297,7 @@ const NewEvent = () => {
             name='character'
             onChange={(event) => setCharacter(event.target.value)}
             required
+            value={character}
           >
             <option value=''>Seleccionar opción...</option>
             <option value='Obligatorio'>Obligatorio</option>
@@ -268,6 +305,7 @@ const NewEvent = () => {
           </select>
           <label htmlFor='generation'>Generación Vértice</label>
           <select
+            value={generation}
             name='generation'
             multiple
             onChange={(event) => handleGenerationOptions(event)}
@@ -280,7 +318,9 @@ const NewEvent = () => {
             <option value='5'>Quinta</option>
             <option value='6'>Sexta</option>
           </select>
-          <button type='submit'>Crear evento</button>
+          <button type='submit'>
+            {eventData ? 'Editar Evento' : 'Crear Evento'}
+          </button>
         </form>
       </div>
     </>
