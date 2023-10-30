@@ -165,6 +165,8 @@ const NewEvent = () => {
             <option value='Acción Social'>Acción Social</option>
             <option value='Proyectos'>Proyectos</option>
             <option value='Integración'>Integración</option>
+            <option value='Ninguna'>N/A</option>
+            <option value='Todos'>Aplican todos</option>
           </select>
           <label htmlFor='modality'>Modalidad</label>
           <select
@@ -222,12 +224,13 @@ const NewEvent = () => {
             <option value='Café Chesterton'>Café Chesterton</option>
             <option value='Investigation Talk'>Investigation Talk</option>
             <option value='Chronicles'>Chronicles</option>
+            <option value='Seminario'>Seminario</option>
           </select>
           <label htmlFor='points'>Puntuación</label>
           <input
             name='points'
             type='number'
-            min='1'
+            min='0'
             required
             value={points}
             onChange={(event) => setPoints(event.target.value)}
