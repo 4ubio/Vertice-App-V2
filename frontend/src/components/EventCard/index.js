@@ -21,6 +21,7 @@ const EventCard = ({
     attendees,
   },
 }) => {
+  const isAdmin = localStorage.getItem("userType") === "admin" ? true : false
   const currentLocation = window.location.pathname;
   const navigate = useNavigate();
 
@@ -83,6 +84,10 @@ const EventCard = ({
     }
   };
 
+  const handleEditEventClick = () => {
+    navigate(`/dashboard/eventos/${eventId}`);
+  }
+
   return (
     <div className="event-container">
       <div className="event-container--columns">
@@ -106,6 +111,14 @@ const EventCard = ({
         <p>Lugar: {place}</p>
       </div>
       <p className="event-container__description">{description}</p>
+      {!!isAdmin && (
+        <button
+          className="event-container__btn"
+          onClick={handleEditEventClick}
+        >
+          Editar evento
+        </button>
+      )}
       {isMemberRegistered() ? (
         <button
           className="event-container__btn"
