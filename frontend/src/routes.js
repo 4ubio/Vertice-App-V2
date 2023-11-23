@@ -4,6 +4,7 @@ import LandingPage from './pages/LandingPage';
 import Dashboard from './pages/Dashboard';
 import AdminEvents from './pages/Dashboard/adminEvents';
 import Events from './pages/Events';
+import EditEvent from './pages/Events/Edit';
 import Members from './pages/Members';
 import DeletedMembers from './pages/DeletedMembers';
 import NewEvent from './pages/NewEvent';
@@ -41,6 +42,7 @@ export const AppRoutes = () => {
         <Route path='/puntaje' element={<Points />} />
         <Route path='/dashboard' element={<Dashboard />} />
         <Route path='/dashboard/eventos' element={<AdminEvents />} />
+        <Route path='/dashboard/eventos/:eventId' element={<EditEvent />} />
         <Route
           path='/dashboard/eventos/:eventId/asistencias/'
           element={<Attendance />}

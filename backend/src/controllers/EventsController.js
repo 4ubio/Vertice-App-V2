@@ -58,6 +58,42 @@ module.exports = {
       return res.json({ message: 'Event not found.' });
     }
   },
+  async editEvent(req, res) {
+    const {
+      id,
+      title,
+      description,
+      date,
+      status,
+      availability,
+      img,
+      generation,
+      committee,
+      modality,
+      place,
+      eventType,
+      points,
+      character,
+      semester,
+    } = req.body;
+    const event = await Event.findOneAndUpdate({ _id: id }, {
+      title,
+      description,
+      date,
+      status,
+      availability,
+      img,
+      generation,
+      committee,
+      modality,
+      place,
+      eventType,
+      points,
+      character,
+      semester,
+    }, { new: true });
+    return res.json(event);
+  },
   // add attendee
   async registerAttendee(req, res) {
     const { eventId } = req.params;

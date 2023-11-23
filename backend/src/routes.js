@@ -29,6 +29,7 @@ routes.get('/applicants/email/:email', ApplicantsController.getApplicantByEmail)
 routes.get('/events', EventsController.getAllEvents);
 routes.post('/events', EventsController.createEvent);
 routes.get('/events/:eventId', EventsController.getEventById);
+routes.patch('/events/:eventId', EventsController.editEvent);
 routes.put('/events/:eventId/attendees/', EventsController.registerAttendee);
 routes.put(
   '/events/:eventId/attendees/:memberId',
