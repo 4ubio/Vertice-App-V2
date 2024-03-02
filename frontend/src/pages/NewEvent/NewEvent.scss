@@ -90,6 +90,27 @@
      @media screen and (max-width: $breakpoint-ipad-screen) {
        width: 64vw;
      }
-     
+
+     .competency-container {
+      display: grid;
+      grid-template-columns: auto min-content; // Auto para el texto, min-content para el botón
+      align-items: center;
+      gap: 1px; // Espacio entre el texto de la competencia y el botón
+      margin-bottom: 1px; // Añade un pequeño margen para separar las competencias visualmente
+    }
+    
+    .remove-button {
+      padding: 5px 10px;
+      cursor: pointer;
+      background-color: $light-pink;
+      border: none;
+      color: $bright-pink;
+    }
+    
+    .competency-text {
+      color: white;
+      // No es necesario el margin-right si usas justify-content: space-between;
+    }
+
   }
 }

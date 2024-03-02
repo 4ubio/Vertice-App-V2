@@ -22,6 +22,26 @@ const NewEvent = ({ eventData = null }) => {
   const [generation, setGeneration] = useState([]);
   const [character, setCharacter] = useState('');
   const [fileName, setFileName] = useState('');
+  const [selectedCompetencies, setSelectedCompetencies] = useState([]);
+  const [availableCompetencies, setAvailableCompetencies] = useState([
+    'Autoconocimiento y sentido de vida',
+    'Conocimiento profesional y técnico',
+    'Conocimiento social',
+    'Comunicación',
+    'Análisis',
+    'Flexibilidad',
+    'Innovación',
+    'Negociación',
+    'Planeación Estratégica',
+    'Servicio',
+    'Solución de problemas',
+    'Toma de decisión',
+    'Trabajo en Equipo',
+    'Pensamiento Crítico',
+    'Investigación',
+    'Proactividad',
+  ]);
+
 
   useEffect(() => {
     if (eventData) {
@@ -78,8 +98,26 @@ const NewEvent = ({ eventData = null }) => {
     });
   };
 
+  const handleSelectCompetency = (event) => {
+    const selectedCompetency = event.target.value;
+    if (!selectedCompetencies.includes(selectedCompetency)) {
+      setSelectedCompetencies([...selectedCompetencies, selectedCompetency]);
+      setAvailableCompetencies(availableCompetencies.filter(c => c !== selectedCompetency));
+    }
+  };
+  
+
+  const handleRemoveCompetency = (competency) => {
+    setSelectedCompetencies(selectedCompetencies.filter(c => c !== competency));
+    setAvailableCompetencies([...availableCompetencies, competency]);
+  };
+
   const handleSubmit = async (event) => {
     event.preventDefault();
+    if (selectedCompetencies.length < 3) {
+      alert('Debes seleccionar al menos 3 competencias.');
+      return;
+    }
     const finalEventType = eventType === 'Otro' ? otherEventType : eventType;
     console.log(
       title,
@@ -318,6 +356,24 @@ const NewEvent = ({ eventData = null }) => {
             <option value='5'>Quinta</option>
             <option value='6'>Sexta</option>
           </select>
+
+          <label htmlFor=''>Competencias</label>
+          
+          <select onChange={handleSelectCompetency} value="">
+            <option value="">Agregar una competencia...</option>
+            {availableCompetencies.map((competency, index) => (
+              <option key={index} value={competency}>{competency}</option>
+            ))}
+          </select>
+
+          {selectedCompetencies.map((competency, index) => (
+          <div key={index} className="competency-container">
+            <span className="competency-text">{competency}</span>
+            <button onClick={() => handleRemoveCompetency(competency)} className="remove-button">Eliminar</button>
+          </div>
+))}
+
+
           <button type='submit'>
             {eventData ? 'Editar Evento' : 'Crear Evento'}
           </button>
