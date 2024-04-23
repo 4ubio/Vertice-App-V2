@@ -4,6 +4,7 @@ import Navbar from '../../components/Navbar';
 import Sidebar from '../../components/Sidebar';
 import api from '../../services/api';
 import './NewEvent.scss';
+import { Navigate } from 'react-router-dom';
 
 const NewEvent = ({ eventData = null }) => {
   const [id, setId] = useState('');
@@ -22,6 +23,7 @@ const NewEvent = ({ eventData = null }) => {
   const [generation, setGeneration] = useState([]);
   const [character, setCharacter] = useState('');
   const [fileName, setFileName] = useState('');
+  const [competences, setCompetences] = useState([]);
 
   useEffect(() => {
     if (eventData) {
@@ -38,12 +40,13 @@ const NewEvent = ({ eventData = null }) => {
       setPoints(eventData.points);
       setGeneration(eventData.generation);
       setCharacter(eventData.character);
+      setCompetences(eventData.competences);
     }
   }, [eventData]);
 
   const handleEventTypeChange = (event) => {
-  setEventType(event.target.value);
-};
+    setEventType(event.target.value);
+  };
 
   const toggle = () => {
     setIsOpen(!isOpen);
@@ -78,8 +81,22 @@ const NewEvent = ({ eventData = null }) => {
     });
   };
 
+  const handleCompetencesOptions = (event) => {
+    let value = Array.from(
+      event.target.selectedOptions,
+      (option) => option.value
+    );
+    let selectedOptions = value;
+    setCompetences(selectedOptions);
+  };
+
+
   const handleSubmit = async (event) => {
     event.preventDefault();
+    if (competences.length < 3) {
+      alert('Debes seleccionar al menos 3 competencias.');
+      return;
+    }
     const finalEventType = eventType === 'Otro' ? otherEventType : eventType;
     console.log(
       title,
@@ -92,7 +109,8 @@ const NewEvent = ({ eventData = null }) => {
       eventType,
       points,
       generation,
-      character
+      character,
+      competences,
     );
     const data = {
       title: title,
@@ -110,6 +128,7 @@ const NewEvent = ({ eventData = null }) => {
       character: character,
       semester: 'AGO-DIC 2022',
       attendees: [],
+      competences: competences,
     }
     if (id) data.id = id;
     const response = eventData ? await api.patch(`/events/${data.id}`, data) : await api.post('/events', data);
@@ -271,23 +290,23 @@ const NewEvent = ({ eventData = null }) => {
           </select>
 
           {eventType === 'Otro' && (
-  <div>
-    <label htmlFor="other-event-type">Especificar Tipo de Evento</label>
-    <input
-      name="other-event-type"
-      type="text"
-      placeholder="Especificar tipo de evento"
-      onChange={(event) => setOtherEventType(event.target.value)}
-      required
-    />
-  </div>
-)}
+            <div>
+              <label htmlFor="other-event-type">Especificar Tipo de Evento</label>
+              <input
+                name="other-event-type"
+                type="text"
+                placeholder="Especificar tipo de evento"
+                onChange={(event) => setOtherEventType(event.target.value)}
+                required
+              />
+            </div>
+          )}
 
           <label htmlFor='points'>Puntuación</label>
           <input
             name='points'
             type='number'
-            min='0'
+            min='1'
             required
             value={points}
             onChange={(event) => setPoints(event.target.value)}
@@ -318,6 +337,33 @@ const NewEvent = ({ eventData = null }) => {
             <option value='5'>Quinta</option>
             <option value='6'>Sexta</option>
           </select>
+
+          <label htmlFor='competences'>Competencias</label>
+          <select
+            name='competences'
+            value={competences}
+            onChange={(event) => handleCompetencesOptions(event)}
+            multiple
+            required
+          >
+            <option value='Autoconocimiento y sentido de vida'>Autoconocimiento y sentido de vida</option>
+            <option value='Conocimiento profesional y técnico'>Conocimiento profesional y técnico</option>
+            <option value='Conocimiento social'>Conocimiento social</option>
+            <option value='Comunicación'>Comunicación</option>
+            <option value='Análisis'>Análisis</option>
+            <option value='Flexibilidad'>Flexibilidad</option>
+            <option value='Innovación'>Innovación</option>
+            <option value='Negociación'>Negociación</option>
+            <option value='Planeación Estratégica'>Planeación Estratégica</option>
+            <option value='Servicio'>Servicio</option>
+            <option value='Solución de problemas'>Solución de problemas</option>
+            <option value='Toma de decisión'>Toma de decisión</option>
+            <option value='Trabajo en Equipo'>Trabajo en Equipo</option>
+            <option value='Pensamiento Crítico'>Pensamiento Crítico</option>
+            <option value='Investigación'>Investigación</option>
+            <option value='Proactividad'>Proactividad</option>
+          </select>
+
           <button type='submit'>
             {eventData ? 'Editar Evento' : 'Crear Evento'}
           </button>

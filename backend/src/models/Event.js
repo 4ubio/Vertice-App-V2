@@ -16,6 +16,7 @@ const EventSchema = new mongoose.Schema({
   points: Number,
   character: String,
   semester: String,
+  competences: [],
 });
 
 module.exports = mongoose.model('Event', EventSchema);
