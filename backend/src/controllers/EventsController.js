@@ -26,6 +26,7 @@ module.exports = {
       points,
       character,
       semester,
+      competences,
     } = req.body;
     console.log(req);
     const event = await Event.create({
@@ -44,6 +45,7 @@ module.exports = {
       points,
       character,
       semester,
+      competences,
     });
     console.log(event);
     return res.json(event);
@@ -75,6 +77,7 @@ module.exports = {
       points,
       character,
       semester,
+      competences,
     } = req.body;
     const event = await Event.findOneAndUpdate({ _id: id }, {
       title,
@@ -91,6 +94,7 @@ module.exports = {
       points,
       character,
       semester,
+      competences,
     }, { new: true });
     return res.json(event);
   },

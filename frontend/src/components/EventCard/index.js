@@ -10,6 +10,7 @@ const EventCard = ({
     title,
     description,
     date,
+    status,
     availability,
     img,
     generation,
@@ -18,7 +19,8 @@ const EventCard = ({
     place,
     eventType,
     character,
-    attendees,
+    attendees,  
+    competences,
   },
 }) => {
   const isAdmin = localStorage.getItem("userType") === "admin" ? true : false
@@ -88,53 +90,81 @@ const EventCard = ({
     navigate(`/dashboard/eventos/${eventId}`);
   }
 
-  return (
-    <div className="event-container">
-      <div className="event-container--columns">
-        <p className="event-container__type">{eventType}</p>
-        <p>Fecha: {new Date(date).toLocaleDateString("es-MX", dateOptions)}</p>
+  const handleHideEventClick = async () => {
+    if (window.confirm(
+      `¿Estás seguro que deseas ocultar el evento "${title}"?`
+    )) {
+      let id = `${_id}`;
+      document.getElementById(id).style.display='none';
+    }
+  };
+
+    return (
+      <div className="event-container" id={_id}>
+        <div className="event-container--columns">
+          <p className="event-container__type">{eventType}</p>
+          <p>Fecha: {new Date(date).toLocaleDateString("es-MX", dateOptions)}</p>
+        </div>
+        <img src={img} />
+        <p className="event-container__title">{title}</p>
+        <div className="event-container--columns">
+          <p>Cupo: {availability}</p>
+          <p>Modalidad: {modality}</p>
+          <p>Cáracter: {character}</p>
+        </div>
+        <div className="event-container--columns">
+          <p id="event-container__committee">
+            Comité:{" "}
+            {committee.map((c) => (
+              <p>{c}</p>
+            ))}
+          </p>
+          <p>Lugar: {place}</p>
+        </div>
+        <div className="event-container--columns">
+          <p id="event-container__committee">
+            Competencias:{" "}
+            {competences.map((c) => (
+              <p>{c}</p>
+            ))}
+          </p>
+        </div>
+        <p className="event-container__description">{description}</p>
+
+        {!!isAdmin && (
+          <button
+            className="event-container__btn"
+            onClick={handleHideEventClick}
+          >
+            Ocultar evento
+          </button>
+        )}
+
+        {!!isAdmin && (
+          <button
+            className="event-container__btn"
+            onClick={handleEditEventClick}
+          >
+            Editar evento
+          </button>
+        )}
+
+        {isMemberRegistered() ? (
+          <button
+            className="event-container__btn"
+            onClick={() => {
+              cancelAttendance();
+            }}
+          >
+            Cancelar registro
+          </button>
+        ) : (
+          <button className="event-container__btn" onClick={handleClick}>
+            Registrarse
+          </button>
+        )}
       </div>
-      <img src={img} />
-      <p className="event-container__title">{title}</p>
-      <div className="event-container--columns">
-        <p>Cupo: {availability}</p>
-        <p>Modalidad: {modality}</p>
-        <p>Cáracter: {character}</p>
-      </div>
-      <div className="event-container--columns">
-        <p id="event-container__committee">
-          Comité:{" "}
-          {committee.map((c) => (
-            <p>{c}</p>
-          ))}
-        </p>
-        <p>Lugar: {place}</p>
-      </div>
-      <p className="event-container__description">{description}</p>
-      {!!isAdmin && (
-        <button
-          className="event-container__btn"
-          onClick={handleEditEventClick}
-        >
-          Editar evento
-        </button>
-      )}
-      {isMemberRegistered() ? (
-        <button
-          className="event-container__btn"
-          onClick={() => {
-            cancelAttendance();
-          }}
-        >
-          Cancelar registro
-        </button>
-      ) : (
-        <button className="event-container__btn" onClick={handleClick}>
-          Registrarse
-        </button>
-      )}
-    </div>
-  );
+    );
 };
 
 export default EventCard;
