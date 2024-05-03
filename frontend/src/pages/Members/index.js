@@ -55,6 +55,11 @@ const Members = () => {
       <Navbar toggle={toggle} />
       <div className="members-container">
         <h2>Miembros</h2>
+        <div className="newMembersBotton">
+          <button className="members-container__add" onClick={() => alert('Funcionalidad para agregar nuevo miembro')}>
+            Agregar Nuevos Miembros
+          </button>
+        </div>
         <table className="table-data">
           <tr>
             <th scope="col">Nombre</th>

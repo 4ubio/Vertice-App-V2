@@ -23,4 +23,25 @@
 
     }
   }
+  .newMembersBotton{
+    display: flex;
+    justify-content: flex-end;
+    width: 100%;
+  }
+  .members-container__add {
+    font-family: $default-font; 
+    background-color: $bright-pink; 
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    margin-bottom: 20px; 
+    border-radius: 12px;
+    font-weight: 700;
+    cursor: pointer;
+    &:hover {
+      background-color: darken($bright-pink, 10%); 
+    }
+    
+  }
+  
 }
