@@ -1,0 +1,16 @@
+.manage-members {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    input, button {
+      margin: 10px;
+    }
+    table {
+      margin-top: 20px;
+      th, td {
+        padding: 10px;
+        border: 1px solid #ccc;
+      }
+    }
+  }
+  

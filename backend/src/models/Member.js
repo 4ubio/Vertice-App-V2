@@ -12,4 +12,15 @@ const MemberSchema = new mongoose.Schema({
   status: Number,
 });
 
+app.post('/members/bulk', async (req, res) => {
+  try {
+    const { members } = req.body;
+    await Member.insertMany(members);
+    res.status(201).send('Miembros agregados con éxito');
+  } catch (error) {
+    res.status(500).send('Error al agregar miembros');
+  }
+});
+
+
 module.exports = mongoose.model('Member', MemberSchema);

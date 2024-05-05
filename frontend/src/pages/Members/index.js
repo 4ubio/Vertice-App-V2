@@ -56,9 +56,9 @@ const Members = () => {
       <div className="members-container">
         <h2>Miembros</h2>
         <div className="newMembersBotton">
-          <button className="members-container__add" onClick={() => alert('Funcionalidad para agregar nuevo miembro')}>
+          <a href='/dashboard/nuevosMiembros' className="members-container__add">
             Agregar Nuevos Miembros
-          </button>
+          </a>
         </div>
         <table className="table-data">
           <tr>
