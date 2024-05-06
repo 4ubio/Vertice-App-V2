@@ -49,7 +49,7 @@ const ManageMembers = () => {
         <input name="email" placeholder="Email" value={memberForm.email} onChange={handleChange} />
         <input name="gen" placeholder="Generación" value={memberForm.gen} onChange={handleChange} />
         <input name="bachelor" placeholder="Carrera" value={memberForm.bachelor} onChange={handleChange} />
-        <button onClick={handleAddMember}>Agregar a la Lista</button>
+        <button className='NewMembersBotton' onClick={handleAddMember}>Agregar a la Lista</button>
         <table>
           <thead>
             <tr>
@@ -74,7 +74,7 @@ const ManageMembers = () => {
             ))}
           </tbody>
         </table>
-        <button onClick={handleSubmit}>Registrar Todos los Miembros</button>
+        <button className='NewMembersBotton' onClick={handleSubmit}>Registrar Todos los Miembros</button>
       </div>
     </div>
   );
