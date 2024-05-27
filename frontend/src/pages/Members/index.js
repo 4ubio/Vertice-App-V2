@@ -55,6 +55,11 @@ const Members = () => {
       <Navbar toggle={toggle} />
       <div className="members-container">
         <h2>Miembros</h2>
+        <div className="newMembersBotton">
+        <a href='/dashboard/nuevosMiembros' className="members-container__add">
+            Agregar Nuevos Miembros
+          </a>
+        </div>
         <table className="table-data">
           <tr>
             <th scope="col">Nombre</th>
